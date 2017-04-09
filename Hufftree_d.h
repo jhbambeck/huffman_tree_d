@@ -19,6 +19,10 @@ public:
     void printPre()
         { printPreRec(root); };
     void printPreRec(Node*);
+    void genMessage(std::ifstream& encoded, std::ofstream& message)
+        { genMessageRec(root, encoded, message); };
+    void genMessageRec(Node*, std::ifstream&, std::ofstream&);
+    void standardize(char&);
 };
 
 #endif // HUFFTREE_D_H

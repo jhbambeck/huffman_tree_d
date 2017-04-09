@@ -35,3 +35,38 @@ void Hufftree_d::printPreRec(Node* nodePtr)
         printPreRec(nodePtr->right);
     }
 }
+
+void Hufftree_d::genMessageRec(Node* nodePtr, std::ifstream& encoded, std::ofstream& message)
+{
+    if(nodePtr->ch == '+');
+    else if(nodePtr->ch != '$')
+    {
+        char c = nodePtr->ch;
+        standardize(c);
+        message << c;
+        genMessageRec(root, encoded, message);
+    }
+    else
+    {
+        char c;
+        encoded >> c;
+        if(c == '0')
+        {
+            genMessageRec(nodePtr->left, encoded, message);
+        }
+        else
+        {
+            genMessageRec(nodePtr->right, encoded, message);
+        }
+    }
+}
+
+void Hufftree_d::standardize(char& c)
+{
+    if(c == '-')
+    {
+        c = ' ';
+        std::cout << "standardizing";
+    }
+    if(c == '!') c = '/n';
+}
