@@ -66,7 +66,6 @@ void Hufftree_d::standardize(char& c)
     if(c == '-')
     {
         c = ' ';
-        std::cout << "standardizing";
     }
     if(c == '!') c = '\n';
 }
